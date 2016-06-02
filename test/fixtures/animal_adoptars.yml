@@ -4,12 +4,12 @@ one:
   tipo: MyString
   raza: MyString
   genero: MyString
-  descripcion: MyString
   edad: MyString
+  descripcion: MyString
 
 two:
   tipo: MyString
   raza: MyString
   genero: MyString
-  descripcion: MyString
   edad: MyString
+  descripcion: MyString
