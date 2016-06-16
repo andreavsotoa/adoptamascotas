@@ -4,6 +4,7 @@ include CodigosGenerales
 before_action :cargarOpcionesDelMenuServicios
 
   def index
+    @datos_personals = DatosPersonal.all.paginate(:page => params[:page], :per_page => 2)
   end
 
   def show
@@ -12,6 +13,7 @@ before_action :cargarOpcionesDelMenuServicios
 
   def new
     @datos_personal = DatosPersonal.new
+    @ciudades = []
   end
 
   def create
@@ -31,9 +33,19 @@ before_action :cargarOpcionesDelMenuServicios
   end
 
   def edit
+    @datos_personals = DatosPersonal.find(params[:id])
   end
 
   def update
+    respond_to do |format|
+      if @datos_personal.update(datos_personal_params)
+        format.html { redirect_to @datos_personal, notice: 'Sus Datos personales fueron modificados exitosamente' }
+        format.json { render :show, status: :ok, location: @datos_personal }
+      else
+        format.html { render :edit }
+        format.json { render json: @datos_personal.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
