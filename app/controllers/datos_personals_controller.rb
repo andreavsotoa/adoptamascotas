@@ -58,6 +58,16 @@ before_action :cargarOpcionesDelMenuServicios
   def set_datos_personal
     @datos_personal = DatosPersonal.find(params[:id])
   end
+
+  def obtener_ciudades
+    puts "obtener ciudades"
+    puts params[:estado_id]
+    @ciudades = DatosPersonal.estados_ciudades_venezolanos_hash[params[:estado_id]][:municipios].insert(0,DatosPersonal.estados_ciudades_venezolanos_hash[params[:estado_id]][:capital]) 
+
+    puts @ciudades
+  end
+
+
 end
 
 

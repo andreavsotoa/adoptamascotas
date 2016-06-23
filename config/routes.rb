@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   resources :datos_personals
 
+  resources :animal_adoptars
+  resources :animal_adoptar_fotos
+
   get 'pages/home'
+
+  get 'datos_personals/obtener_ciudades/:id'=> 'datos_personals#obtener_ciudades'
   
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
