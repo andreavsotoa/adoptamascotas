@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :usuarios,controllers:{
+    sessions: 'usuarios/sessions',
+    registrations: 'usuarios/registrations'
+  }
+  
   resources :tipo_servicios
 
   resources :servicios
@@ -13,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'datos_personals/obtener_ciudades/:id'=> 'datos_personals#obtener_ciudades'
   
+  get 'pages/home_admin'=> 'pages#home_admin'
+
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

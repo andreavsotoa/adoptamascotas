@@ -33,10 +33,12 @@ before_action :cargarOpcionesDelMenuServicios
   end
 
   def edit
+      @ciudades = []
     @datos_personals = DatosPersonal.find(params[:id])
   end
 
   def update
+      @ciudades = []
     respond_to do |format|
       if @datos_personal.update(datos_personal_params)
         format.html { redirect_to @datos_personal, notice: 'Sus Datos personales fueron modificados exitosamente' }
